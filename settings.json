@@ -1,0 +1,1 @@
+{"detect": true, "detect_threshold": 0.5, "motion": false, "detect_objects": ["person"], "record": false, "rotation": "0", "timestamp": false}
