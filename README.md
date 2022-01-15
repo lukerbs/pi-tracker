@@ -48,7 +48,8 @@ This project touches concepts from computer vision, deep learning, robotics, net
 ### Launch the Pi-Tracker Web Application on the Raspberry Pi
   * cd into the root project directory: `cd pi-tracker/`
   * Create and activate a virtual environment: `python3 -m venv venv && . venv/bin/activate`
-  * Run `pip3 install -r requirements.txt` to install all Python dependencies
+  * Run `chmod +x setup.sh` to allow execution permissions on the setup script
+  * Run `./setup.sh` to install all dependencies
   * Run `python3 app.py` to start the Pi-Tracker web application
 ### Open the Web Application in Your Web Browser
   * If you are on the same router as the Raspberry Pi:
