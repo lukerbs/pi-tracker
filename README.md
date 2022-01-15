@@ -15,7 +15,7 @@ This project touches concepts from computer vision, deep learning, robotics, net
 ### Assembling the Hardware
   1. Assemble Pan Tilt Hat Kit according to the instuctions included with the kit
   2. Attach the ribbon connectors to the Raspberry Pi according to the diagram below:
-    ![Servo Diagram](/static/img/servo-diagram.png)
+    <img src="/static/img/servo-diagram.png" alt="Servo Diagram" width="50%"/>
   3. Plug the Coral USB Accellerator into an available Raspberry Pi USB port (optional but recommended for optimal performance)
   4. Plug the Raspberry Pi into a power source 
 
