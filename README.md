@@ -13,11 +13,12 @@ This project touches concepts from computer vision, deep learning, robotics, net
   * Mini Pan Tilt Kit with 2 Micro Servo Motors 
   * Camera Module for Raspberry Pi
 ### Assembling the Hardware
-  1. Assemble Pan Tilt Hat Kit according to the instuctions included with the kit
-  2. Attach the ribbon connectors to the Raspberry Pi according to the diagram below:
+  1. Assemble Pan Tilt Hat Kit with camera module according to the instuctions included with the kit
+  2. Attach the servo wires to the Raspberry Pi according to the diagram below:
     <img src="/static/img/servo-diagram.png" alt="Servo Diagram" width="50%"/>
-  3. Plug the Coral USB Accellerator into an available Raspberry Pi USB port (optional but recommended for optimal performance)
-  4. Plug the Raspberry Pi into a power source 
+  3. Attach the Camera Module ribbon connector cable to the Rasberry Pi.
+  4. Plug the Coral USB Accellerator into an available Raspberry Pi USB port (optional but recommended for optimal performance)
+  5. Plug the Raspberry Pi into a power source 
 
 ## Software Installation & Setup
 ### Configuring Port Forwarding
@@ -28,7 +29,7 @@ This project touches concepts from computer vision, deep learning, robotics, net
     1. The Private IP address of your Raspberry Pi 
     2. The public IP address of your Router 
     3. The port number that the web application will run on (8000)
-  * **Note:** The process of enabling port forwarding is different for every router and internet service provider. Research the correct steps for your specific internet provider.
+  * **Note:** The process of enabling port forwarding is different for every router and internet service provider. Research the correct steps for your specific internet provider. Google 'port forwarding flask applications'.
 ### SSH into the Raspberry Pi from your Laptop or Desktop Computer
   * Open your laptop or desktop terminal application
   * SSH into the Raspberry Pi: 
