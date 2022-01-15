@@ -51,5 +51,7 @@ This project touches concepts from computer vision, deep learning, robotics, net
   * Run `pip3 install -r requirements.txt` to install all Python dependencies
   * Run `python3 app.py` to start the Pi-Tracker web application
 ### Open the Web Application in Your Web Browser
-  * Open [http://localhost:8000](http://localhost:8000) in your internet browser
-
+  * If you are on the same router as the Raspberry Pi:
+    * Run `ssh pi@<raspberry-pi-IP-address>`
+  * If you accessing the Raspberry Pi from a remote network:
+    * Run `ssh pi@<public-IP-address>`
