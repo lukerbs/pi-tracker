@@ -1,4 +1,4 @@
-# Pi-Eye 🤖
+# Pi-Tracker
 
 ## Introduction
 Pi-Eye is a smart surveillance web application built for the Raspberry Pi. 
