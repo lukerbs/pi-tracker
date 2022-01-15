@@ -12,15 +12,15 @@ This project touches concepts from computer vision, deep learning, robotics, net
     * **Note:** This component is optional, but highly recommended as it significantly improves the object detection and frame rate
   * Mini Pan Tilt Kit with 2 Micro Servo Motors 
   * Camera Module for Raspberry Pi
-### Assemble the Hardware
+### Assembling the Hardware
   1. Assemble Pan Tilt Hat Kit according to the instuctions included with the kit
   2. Attach the ribbon connectors to the Raspberry Pi according to the diagram below:
-  IMAGE HERE
+    ![Servo Diagram](/static/img/servo-diagram.png)
   3. Plug the Coral USB Accellerator into an available Raspberry Pi USB port (optional but recommended for optimal performance)
   4. Plug the Raspberry Pi into a power source 
 
 ## Software Installation & Setup
-### Configure Port Forwarding
+### Configuring Port Forwarding
   * Port forwarding allows remote computers to connect to the Raspberry Pi that sits behind your private network
   * We need to set up port forwarding so that we can access the control panel from any computer
   * The Pi-Tracker web application runs on port **8000**.
