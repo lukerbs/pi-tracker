@@ -51,6 +51,6 @@ This project touches concepts from computer vision, deep learning, robotics, net
   * Run `python3 app.py` to start the Pi-Tracker web application
 ### Open the Web Application in Your Web Browser
   * If you are on the same router as the Raspberry Pi:
-    * Go to <raspberry-pi-IP-address>:8000 in your web browser
+    * Go to your-raspberry-pi-IP-address:8000 in your web browser
   * If you accessing the Raspberry Pi from a remote network:
-    * Go to <public-IP-address>:8000 in your web browser
+    * Go to your-public-IP-address:8000 in your web browser
