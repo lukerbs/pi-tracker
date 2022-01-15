@@ -21,7 +21,6 @@ import argparse
 import datetime
 import requests
 import atexit
-import pygame
 import utils
 import json
 import time
