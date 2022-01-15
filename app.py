@@ -20,6 +20,7 @@ import threading
 import argparse
 import datetime
 import requests
+import atexit
 import pygame
 import utils
 import json
@@ -29,39 +30,30 @@ import os
 import io
 import re
 
-
-
 from gpiozero import Servo
 import math
 from time import sleep
 from gpiozero.pins.pigpio import PiGPIOFactory
 
+
+print('Starting Application ...')
+os.system('sudo pigpiod')
+time.sleep(5)
+
 factory = PiGPIOFactory()
-servo = Servo(18, min_pulse_width=0.5/1000, max_pulse_width=2.5/1000, pin_factory=factory)
+servo = Servo(12, min_pulse_width=0.5/1000, max_pulse_width=2.5/1000, pin_factory=factory)
 position = 0
 servo.value = math.sin(math.radians(position))
 
 time.sleep(.5)
 
-servo_b = Servo(12, min_pulse_width=0.5/1000, max_pulse_width=2.5/1000, pin_factory=factory)
+servo_b = Servo(18, min_pulse_width=0.5/1000, max_pulse_width=2.5/1000, pin_factory=factory)
 position_b = 0
 servo_b.value = math.sin(math.radians(position_b))
 
 
 app = Flask(__name__, static_folder='static')
 port=8000
-
-
-# output link for webapp
-print('\n\n🤖 Pi-Vision 🤖\n')
-print('Log in to piEye. Go to:')
-print('🏠 http://0.0.0.0:'+ str(port) +'/ if accessing from Raspberry Pi.')
-rpi_ip = subprocess.getoutput('hostname -I').split()[0]
-print('🏠 http://' + rpi_ip + ':' + str(port) +'/ if accessing from local network.')
-# get the external ip of the raspberry pi
-public_ip = requests.get('https://api.ipify.org').text
-print('🌎 http://' + public_ip + ':'+ str(port) +'/ if accessing from remote network (port forwarding required).')
-print('')
 
 # - - - - - - - - - - - - - - LOAD SETTINGS START - - - - - - - - - - - - - - - - - - - - - - - - - -
 with open('settings.json') as settings:
@@ -299,8 +291,6 @@ def stop_pan():
 
 @app.route('/home')
 def home_position():
-
-
     return ''
     
 
@@ -433,10 +423,10 @@ def toggle_detection():
 labels = load_labels('model/coco_labels.txt')
 try:
     interpreter = Interpreter(model_path='model/edgetpu.tflite', experimental_delegates=[load_delegate('libedgetpu.so.1.0')])
-    print('\nCoral USB Accelerator Detected.\nRunning model on edge TPU\nModel loaded.\n')
+    print('\nCoral USB Accelerator Detected.\nRunning model on edge TPU\nModel Loaded.\n')
 except:
     interpreter = Interpreter('model/detect.tflite')
-    print('\nNo accelerator detected.\nModel loaded.\n')
+    print('\nWARNING: Coral USB Accelerator Not Detected. Enabling object detection will greatly affect video frame rate. \nModel Loaded.\n')
 interpreter.allocate_tensors()
 _, input_height, input_width, _ = interpreter.get_input_details()[0]['shape']
 
@@ -454,7 +444,6 @@ def gen_frames():
     global num_frames
     global camera_capture
     global x
-
 
     # settings for video recording 
     fourcc_type = 'avc1' #'mp4v'
@@ -548,8 +537,8 @@ def video_feed():
 
 # - - - - - - - - - - - APP PAGES START - - - - - - - - - - - - - - - - -
 
-# user registration page
-# disabled sign-up so not everyone can sign up and use the robot
+# robot
+# HelloRobot950
 # @app.route('/signup', methods=['GET', 'POST'])
 # def signup():
 #     form = RegisterForm()
@@ -605,8 +594,30 @@ def video_page():
 
 # - - - - - - - - - - - APP PAGES END - - - - - - - - - - - - - - - - -
 
-
 # - - - - - - - - - - RETA APP START - - - - - - - - - - - - - - - -
+
+def exit_handler():
+    global factory
+    print('Closing Application')
+    factory.close()
+
+atexit.register(exit_handler)
+
+# output link for webapp
+print('\n\n🤖 WELCOME TO Pi-TRACKER 🤖\n')
+print('Log in to Pi-Tracker. Go to:')
+print('🏠 http://0.0.0.0:'+ str(port) +'/ if accessing from Raspberry Pi.')
+rpi_ip = subprocess.getoutput('hostname -I').split()[0]
+print('🏠 http://' + rpi_ip + ':' + str(port) +'/ if accessing from local network.')
+# get the external ip of the raspberry pi
+public_ip = requests.get('https://api.ipify.org').text
+print('🌎 http://' + public_ip + ':'+ str(port) +'/ if accessing from remote network (port forwarding required).')
+print('')
+print('LOGIN CREDENTIALS')
+print('Username: robot')
+print('Password: HelloRobot950')
+print('')
+
 if __name__ == '__main__':
     # start the app
     app.run(host='0.0.0.0', port=port)
